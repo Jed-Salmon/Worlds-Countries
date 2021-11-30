@@ -1,8 +1,10 @@
+import ThemeToggler from "./ThemeToggler";
+
 const Navbar = () => {
   return (
     <header>
       <h1>Where in the world?</h1>
-      <button className="dark-toggle">🌙 Dark Mode</button>
+      <ThemeToggler />
     </header>
   );
 };

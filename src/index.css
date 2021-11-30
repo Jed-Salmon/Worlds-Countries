@@ -1,13 +1,59 @@
+:root {
+  /* Dark */
+  --elements-dark: hsl(209, 23%, 22%);
+  --background-dark: hsl(207, 26%, 17%);
+  --input-dark: hsl(0, 0%, 100%);
+  --text-dark: hsl(0, 0%, 100%);
+  /* Light */
+  --elements-light: hsl(0, 0%, 100%);
+  --background-light: hsl(0, 0%, 98%);
+  --input-light: hsl(0, 0%, 52%);
+  --text-light: hsl(200, 15%, 8%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: var(--text-dark);
+    --elements: var(--elements-dark);
+    --background: var(--background-dark);
+    --input: var(--input-dark);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: var(--text-light);
+    --elements: var(--elements-light);
+    --background: var(--background-light);
+    --input: var(--input-light);
+  }
+}
+
+body[data-theme="dark"] {
+  --text: var(--text-dark);
+  --elements: var(--elements-dark);
+  --background: var(--background-dark);
+  --input: var(--input-dark);
+}
+
+body[data-theme="light"] {
+  --text: var(--text-light);
+  --elements: var(--elements-light);
+  --background: var(--background-light);
+  --input: var(--input-light);
+}
+
 body {
+  background: var(--background);
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
