@@ -1,0 +1,50 @@
+.search-bar {
+  display: flex;
+  width: 100%;
+  height: 56px;
+  background: var(--elements);
+  border-radius: 8px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+
+.search-bar .icon {
+  margin: auto 2rem;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+}
+
+.search-bar input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.search-bar input:focus-visible {
+  outline: none;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .search-bar {
+    width: 500px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}

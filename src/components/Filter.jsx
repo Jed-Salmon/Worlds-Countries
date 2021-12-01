@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import "../styles/Filter.css";
 
 const Filter = ({ filterHandler }) => {
   const selectRef = useRef();
@@ -8,7 +9,7 @@ const Filter = ({ filterHandler }) => {
   };
 
   return (
-    <div>
+    <div className="region-filter">
       <select name="region-filter" ref={selectRef} onChange={filterRegion}>
         <option value="">Filter by Region</option>
         <option value="africa">Africa</option>

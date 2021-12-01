@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { AiOutlineSearch } from "react-icons/ai";
+import "../styles/Search.css";
 
 const Search = ({ searchHandler }) => {
   const [searchInput, setSearchInput] = useState("");
@@ -12,8 +14,10 @@ const Search = ({ searchHandler }) => {
   };
 
   return (
-    <div>
-      <div className="icon">S</div>
+    <div className="search-bar">
+      <div className="icon">
+        <AiOutlineSearch />
+      </div>
       <input
         type="text"
         placeholder="search for a country..."

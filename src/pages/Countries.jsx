@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import CountryCard from "../components/CountryCard";
+import AllCountries from "../components/AllCountries";
 import Filter from "../components/Filter";
 import Search from "../components/Search";
+import "../styles/Countries.css";
 
 const Homepage = () => {
   const [countries, setCountries] = useState([]);
@@ -10,6 +11,7 @@ const Homepage = () => {
   const handleSearch = (userInput) => {
     console.log(userInput);
   };
+
   const handleFilter = (userOption) => {
     console.log(userOption);
   };
@@ -23,7 +25,7 @@ const Homepage = () => {
       setCountries(data);
       setIsLoading(false);
     } catch (error) {
-      console.log(error);
+      setIsLoading(false);
     }
   };
 
@@ -33,20 +35,13 @@ const Homepage = () => {
 
   return (
     <div>
-      <Search searchHandler={handleSearch} />
-      <Filter filterHandler={handleFilter} />
-      {/* {countries.map((country) => console.log(country))} */}
-      <div className="country-grid">
-        {countries.map((country) => (
-          <CountryCard
-            flag={country.flag}
-            name={country.name}
-            population={country.population}
-            region={country.region}
-            capital={country.capital}
-          />
-        ))}
+      <div className="filters">
+        <Search searchHandler={handleSearch} />
+        <Filter filterHandler={handleFilter} />
       </div>
+      {/* {countries.map((country) => console.log(country))} */}
+      {isLoading && <p>Loading...</p>}
+      <AllCountries countries={countries} />
     </div>
   );
 };
