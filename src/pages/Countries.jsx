@@ -8,6 +8,8 @@ const Homepage = () => {
   const [countries, setCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  console.log(countries);
+
   const handleSearch = (userInput) => {
     console.log(userInput);
   };
@@ -40,8 +42,10 @@ const Homepage = () => {
         <Filter filterHandler={handleFilter} />
       </div>
       {/* {countries.map((country) => console.log(country))} */}
-      {isLoading && <p>Loading...</p>}
-      <AllCountries countries={countries} />
+      <div className="loading">{isLoading && <p>Loading...</p>}</div>
+      {!isLoading && countries.length !== 0 && (
+        <AllCountries countries={countries} />
+      )}
     </div>
   );
 };

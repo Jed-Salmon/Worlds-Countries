@@ -1,0 +1,124 @@
+.country {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 1.5rem 0;
+}
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 40px;
+  color: var(--text);
+  margin-top: 3rem;
+}
+
+.country .flag {
+  max-width: 640px;
+  margin: 1.5rem 0;
+}
+
+.country .flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.country .country-info {
+  min-width: 50%;
+  color: var(--text);
+}
+
+.country-info .country-name {
+  margin-top: 1.5rem;
+}
+
+.country-info .stats {
+  display: flex;
+  flex-direction: column;
+}
+
+.country-info .stats ul {
+  margin: 1.25rem 0;
+}
+
+.country-info .bordering {
+  margin: 1.25rem 0 2.5rem 0;
+}
+.bordering .border-countries {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bordering .border-countries h4 {
+  margin-bottom: 2rem;
+}
+
+.bordering .border-countries > div {
+  margin: 1rem 1rem 0 0;
+}
+/* .bordering .border-countries > div:last-child {
+  margin-right: 0;
+} */
+
+.border-countries .country-code {
+  width: 80px;
+  height: 40px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .country .country-info .bordering .border-countries {
+    grid-template-columns: auto auto auto auto;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .country {
+    flex-direction: row;
+    margin: 6rem 0;
+  }
+
+  .country .flag {
+    margin: 0;
+    max-width: 50%;
+  }
+
+  .country .country-info {
+    align-self: center;
+    margin-left: 3rem;
+  }
+
+  .country .country-info .stats {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .country-info .stats ul {
+    width: 50%;
+  }
+  .country-info .stats ul:first-of-type {
+    margin: 1.25rem 1.25rem 1.25rem 0;
+  }
+
+  .country-info .stats ul:last-of-type {
+    width: calc(50% - 16px);
+  }
+
+  .country .country-info .bordering {
+    margin: 1.25rem 0 0 0;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}

@@ -1,3 +1,7 @@
+.loading {
+  color: var(--text);
+}
+
 .country-grid {
   display: grid;
   grid-template-columns: auto;

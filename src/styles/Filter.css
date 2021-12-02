@@ -21,3 +21,9 @@
   width: 200px;
   border: none;
 }
+
+@media screen and (max-width: 768px) {
+  .region-filter {
+    margin: 3rem 0;
+  }
+}
