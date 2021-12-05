@@ -9,10 +9,6 @@ const Search = ({ searchHandler }) => {
     searchHandler(searchInput);
   }, [searchInput, searchHandler]);
 
-  const updateSearch = (e) => {
-    setSearchInput(e.target.value);
-  };
-
   return (
     <div className="search-bar">
       <div className="icon">
@@ -22,7 +18,7 @@ const Search = ({ searchHandler }) => {
         type="text"
         placeholder="search for a country..."
         value={searchInput}
-        onChange={updateSearch}
+        onChange={(e) => setSearchInput(e.target.value)}
       />
     </div>
   );

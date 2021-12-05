@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import { VscArrowSmallLeft } from "react-icons/vsc";
 import "../styles/CountryDetails.css";
 import Card from "./Card";
 
-const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
+// const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
 
 const CountryDetails = ({ country }) => {
   const {
@@ -19,18 +20,19 @@ const CountryDetails = ({ country }) => {
     subregion,
   } = country;
 
-  console.log(country);
-
   return (
     <>
       <Link to="/" style={{ textDecoration: "none" }}>
         <Card className="back-btn">
-          <span>{"<-"}</span> Back
+          <span className="icon">
+            <VscArrowSmallLeft />
+          </span>
+          Back
         </Card>
       </Link>
       <div className="country">
         <div className="flag">
-          <img src={flag} alt={name} />
+          <img src={flag} alt={`${name} flag`} />
         </div>
         <div className="country-info">
           <h1 className="country-name">{name}</h1>

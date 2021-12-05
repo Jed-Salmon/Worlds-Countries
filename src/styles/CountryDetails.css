@@ -14,6 +14,14 @@
   margin-top: 3rem;
 }
 
+.back-btn .icon {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -0.5rem;
+}
+
 .country .flag {
   max-width: 640px;
   margin: 1.5rem 0;
@@ -97,6 +105,10 @@
   .country .country-info {
     align-self: center;
     margin-left: 3rem;
+  }
+
+  .country-info .country-name {
+    margin-top: 0;
   }
 
   .country .country-info .stats {

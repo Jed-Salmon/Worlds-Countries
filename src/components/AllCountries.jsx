@@ -2,17 +2,16 @@ import CountryCard from "../components/CountryCard";
 import "../styles/AllCountries.css";
 
 const AllCountries = ({ countries }) => {
-  // console.log(countries);
   return (
     <div className="country-grid">
-      {countries.map((country) => (
+      {countries.map(({ name, flags, population, region, capital }) => (
         <CountryCard
-          key={country.name}
-          flag={country.flag}
-          name={country.name}
-          population={country.population}
-          region={country.region}
-          capital={country.capital}
+          key={name.common}
+          flag={flags.svg}
+          name={name.common}
+          population={population}
+          region={region}
+          capital={capital}
         />
       ))}
     </div>

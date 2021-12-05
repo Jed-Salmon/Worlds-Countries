@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import CountryDetails from "../components/CountryDetails";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const Details = () => {
   const [country, setCountry] = useState([]);
@@ -15,7 +16,9 @@ const Details = () => {
         `https://restcountries.com/v2/name/${params.country}`
       );
       const data = await res.json();
-      setCountry(data[0]);
+      const [countryData] = data;
+      console.log(countryData);
+      setCountry(countryData);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -28,8 +31,7 @@ const Details = () => {
 
   return (
     <div id="country">
-      {/* {countries.map((country) => console.log(country))} */}
-      {isLoading && <div className="loading">{<p>Loading...</p>}</div>}
+      {isLoading && <LoadingSpinner />}
       {!isLoading && country.length === 0 && (
         <p>That country cannot be found</p>
       )}

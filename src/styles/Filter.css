@@ -15,6 +15,7 @@
   color: var(--text);
   border: none;
   border-radius: 8px;
+  font-size: 1rem;
 }
 
 .region-filter select > option {

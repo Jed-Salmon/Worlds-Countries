@@ -2,38 +2,58 @@ import { useEffect, useState } from "react";
 import AllCountries from "../components/AllCountries";
 import Filter from "../components/Filter";
 import Search from "../components/Search";
+import LoadingSpinner from "../components/LoadingSpinner";
 import "../styles/Countries.css";
 
 const Homepage = () => {
   const [countries, setCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
-  console.log(countries);
+  const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (userInput) => {
-    console.log(userInput);
+    setSearchTerm(userInput);
   };
 
   const handleFilter = (userOption) => {
     console.log(userOption);
+    if (userOption !== "") {
+      fetchCountries(`https://restcountries.com/v3.1/region/${userOption}`);
+    } else {
+      fetchCountries("https://restcountries.com/v3.1/all");
+    }
+    return;
   };
 
-  const fetchCountries = async () => {
+  const fetchCountries = async (endpoint) => {
     setIsLoading(false);
     try {
-      const res = await fetch("https://restcountries.com/v2/all");
+      const res = await fetch(endpoint);
       setIsLoading(true);
       const data = await res.json();
       setCountries(data);
       setIsLoading(false);
+      console.log(data);
     } catch (error) {
       setIsLoading(false);
+      setError(error);
     }
   };
 
   useEffect(() => {
-    fetchCountries();
+    fetchCountries("https://restcountries.com/v3.1/all");
   }, []);
+
+  const filteredCountries = countries.filter((country) => {
+    if (searchTerm === "") {
+      return country;
+    } else {
+      return (
+        country.name.common.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        country.name.official.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+  });
 
   return (
     <div>
@@ -41,10 +61,10 @@ const Homepage = () => {
         <Search searchHandler={handleSearch} />
         <Filter filterHandler={handleFilter} />
       </div>
-      {/* {countries.map((country) => console.log(country))} */}
-      <div className="loading">{isLoading && <p>Loading...</p>}</div>
+      {isLoading && <LoadingSpinner />}
+      {error && <p>{error}</p>}
       {!isLoading && countries.length !== 0 && (
-        <AllCountries countries={countries} />
+        <AllCountries countries={filteredCountries} />
       )}
     </div>
   );
