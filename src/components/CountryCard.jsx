@@ -7,7 +7,7 @@ const CountryCard = ({ flag, name, population, region, capital }) => {
     <Card>
       <div className="country-card">
         <div className="flag">
-          <Link to={`/${name}`}>
+          <Link to={`/${name.replace(/\s+/g, "-")}`}>
             <img src={flag} alt={`${name} flag`} />
           </Link>
         </div>

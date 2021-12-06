@@ -8,12 +8,13 @@ const Details = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const params = useParams();
+  console.log(params);
 
   const fetchCountryDetails = useCallback(async () => {
     try {
       setIsLoading(true);
       const res = await fetch(
-        `https://restcountries.com/v2/name/${params.country}`
+        `https://restcountries.com/v2/name/${params.country.replace(/-/g, " ")}`
       );
       const data = await res.json();
       const [countryData] = data;
