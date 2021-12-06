@@ -20,8 +20,6 @@ const CountryDetails = ({ country }) => {
     subregion,
   } = country;
 
-  console.log(Object.values(languages));
-
   return (
     <>
       <Link to="/" style={{ textDecoration: "none" }}>
