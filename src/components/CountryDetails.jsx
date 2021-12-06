@@ -7,18 +7,20 @@ import Card from "./Card";
 
 const CountryDetails = ({ country }) => {
   const {
-    flag,
+    flags,
     name,
     nativeName,
     population,
     region,
     borders,
-    topLevelDomain,
+    tld,
     capital,
     currencies,
     languages,
     subregion,
   } = country;
+
+  console.log(Object.values(languages));
 
   return (
     <>
@@ -32,15 +34,15 @@ const CountryDetails = ({ country }) => {
       </Link>
       <div className="country">
         <div className="flag">
-          <img src={flag} alt={`${name} flag`} />
+          <img src={flags.svg} alt={`${name.common} flag`} />
         </div>
         <div className="country-info">
-          <h1 className="country-name">{name}</h1>
+          <h1 className="country-name">{name.common}</h1>
           <div className="stats">
             <ul>
               <li>
                 <span>Native Name: </span>
-                {nativeName}
+                {name.official}
               </li>
               <li>
                 <span>Population: </span>
@@ -56,30 +58,32 @@ const CountryDetails = ({ country }) => {
               </li>
               <li>
                 <span>Capital: </span>
-                {capital}
+                {capital ? (
+                  capital.map(
+                    (city, index) =>
+                      `${city}${index < capital.length - 1 ? ", " : "."}`
+                  )
+                ) : (
+                  <p>N/A</p>
+                )}
               </li>
             </ul>
 
             <ul>
               <li>
                 <span>Top Level Domain: </span>
-                {topLevelDomain}
+                {tld.map((domain) => domain)}
               </li>
               <li>
                 <span>Currencies: </span>
                 {currencies !== undefined
-                  ? currencies.map((currency) => currency.name)
+                  ? Object.values(currencies)[0].name
                   : "No currencies"}
               </li>
               <li>
                 <span>Languages: </span>
-                {languages.map((language, index) => (
-                  <span key={index} className="lang">
-                    {`${language.name}${
-                      index < languages.length - 1 ? ", " : ""
-                    }`}
-                  </span>
-                ))}
+
+                {`${Object.values(languages).join(", ")}`}
               </li>
             </ul>
           </div>
@@ -95,7 +99,7 @@ const CountryDetails = ({ country }) => {
                   </Card>
                 ))
               ) : (
-                <p>{name} borders no countries.</p>
+                <p>{name.common} borders no countries.</p>
               )}
             </div>
           </div>

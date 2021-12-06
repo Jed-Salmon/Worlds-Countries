@@ -8,17 +8,18 @@ const Details = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const params = useParams();
-  console.log(params);
 
   const fetchCountryDetails = useCallback(async () => {
     try {
       setIsLoading(true);
       const res = await fetch(
-        `https://restcountries.com/v2/name/${params.country.replace(/-/g, " ")}`
+        `https://restcountries.com/v3.1/name/${params.country.replace(
+          /-/g,
+          " "
+        )}?fullText=true`
       );
       const data = await res.json();
       const [countryData] = data;
-      console.log(countryData);
       setCountry(countryData);
       setIsLoading(false);
     } catch (error) {

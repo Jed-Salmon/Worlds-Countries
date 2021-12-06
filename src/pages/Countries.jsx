@@ -16,7 +16,6 @@ const Homepage = () => {
   };
 
   const handleFilter = (userOption) => {
-    console.log(userOption);
     if (userOption !== "") {
       fetchCountries(`https://restcountries.com/v3.1/region/${userOption}`);
     } else {
@@ -33,7 +32,7 @@ const Homepage = () => {
       const data = await res.json();
       setCountries(data);
       setIsLoading(false);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       setIsLoading(false);
       setError(error);
